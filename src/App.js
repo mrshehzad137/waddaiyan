@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './scss/style.scss';
 import Home from './containers/Home';
+import Detailpage from './containers/Detailpage';
 import UserLogin from './views/User/Login';
 import CustomerLogin from './views/Customer/Login';
 import UserSignUp from './views/User/Signup';
@@ -13,6 +14,7 @@ class App extends Component {
       <Router>
           <Switch>
             <Route exact path="/" name="Home" component={Home}/>
+            <Route  path="/user/detailpage" name="Detailpage" component={Detailpage} />  
             <Route  path="/user/login" name="User Login" component={UserLogin} />
             <Route  path="/customer/login" name="Customer Login" component={CustomerLogin} />
             <Route  path="/user/signup" name="User Login" component={UserSignUp} />
