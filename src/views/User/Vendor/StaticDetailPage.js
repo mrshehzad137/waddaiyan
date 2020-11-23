@@ -9,10 +9,10 @@ import {
     CTextarea
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-import TheHeader from './TheHeader';
-import hallimage from '../assets/img/det.webp'
+import TheHeader from '../../../containers/TheHeader';
+import hallimage from '../../../assets/img/det.webp'
 import { AiOutlineStar, AiFillPhone } from "react-icons/ai";
-import img from '../assets/img/profile.png'
+import img from '../../../assets/img/profile.png'
 
 const data = [
     {

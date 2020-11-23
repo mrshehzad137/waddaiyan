@@ -14,7 +14,8 @@ import {
   CInputGroupPrepend,
   CInputGroupText,
   CHeaderNavLink,
-  CRow
+  CRow,
+  CLink
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import adminImage from '../../assets/img/imag1.png'
@@ -94,7 +95,7 @@ class CustomerLogin extends Component {
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton style={{color:'pink'}} className="px-4">Login</CButton>
+                      <CLink to="/"  style={{color:'pink'}}>Login</CLink>
                       </CCol>
                       <CCol xs="6" className="text-right">
                       <CHeaderNavLink to="/" style={{color:'pink'}}>Forgot password?</CHeaderNavLink>

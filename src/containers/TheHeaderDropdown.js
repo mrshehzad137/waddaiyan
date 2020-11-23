@@ -50,8 +50,8 @@ const TheHeaderDropdown = () => {
         </CDropdownItem>
         <CDropdownItem divider />
         <CDropdownItem>
-          <CIcon name="cil-account-logout"  /> 
-          Logout
+        <CHeaderNavLink to="/user/login">Logout</CHeaderNavLink>
+    
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
