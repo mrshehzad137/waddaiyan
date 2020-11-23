@@ -4,6 +4,7 @@ import {
   CDropdown,
   CDropdownItem,
   CDropdownMenu,
+  CHeaderNavLink,
   CDropdownToggle,
   CImg
 } from '@coreui/react'
@@ -35,21 +36,17 @@ const TheHeaderDropdown = () => {
           <strong>Settings</strong>
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon name="cil-user" className="mfe-2" />Profile
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name="cil-settings" className="mfe-2" /> 
-          Settings
+          <CIcon name="cil-user" className="mfe-2" /><CHeaderNavLink to="/user/profile">Profile</CHeaderNavLink>
         </CDropdownItem>
         <CDropdownItem>
           <CIcon name="cil-credit-card" className="mfe-2" /> 
           Payments
-          <CBadge color="secondary" className="mfs-auto">42</CBadge>
+          <CBadge color="secondary" className="mfs-auto">$10</CBadge>
         </CDropdownItem>
         <CDropdownItem>
           <CIcon name="cil-file" className="mfe-2" /> 
-          Projects
-          <CBadge color="primary" className="mfs-auto">42</CBadge>
+          <CHeaderNavLink to="/user/events">Events</CHeaderNavLink>
+          <CBadge color="primary" className="mfs-auto">2</CBadge>
         </CDropdownItem>
         <CDropdownItem divider />
         <CDropdownItem>
