@@ -16,7 +16,7 @@ import {
 import CIcon from '@coreui/icons-react';
 import TheHeader from './TheHeader';
 
-class SSRSHome extends Component {
+class Home extends Component {
   render() {
     return (
         <body className="app" >
@@ -136,7 +136,7 @@ class SSRSHome extends Component {
 // SSRSHome.propTypes = propTypes;
 // SSRSHome.defaultProps = defaultProps;
 
-export default SSRSHome;
+export default Home;
 
 
 {/* <div className="row">

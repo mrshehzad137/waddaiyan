@@ -106,7 +106,7 @@ class Profile extends Component {
                     </CRow>
                 </form>
                 </CCardBody>
-                <CCardFooter><a href="#" style={{float:'right'}}>Update Profile</a></CCardFooter>
+                <CCardFooter><a href="/user/edit" style={{float:'right'}}>Edit Profile</a></CCardFooter>
                 </CCard>
                </div>
                
