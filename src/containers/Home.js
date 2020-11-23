@@ -11,6 +11,7 @@ import {
   CCardFooter,
   CCol,
   CRow,
+  CLink,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
 import TheHeader from './TheHeader';
@@ -35,7 +36,7 @@ class SSRSHome extends Component {
                       <CInputGroup>
                         <CInputGroupPrepend>
                           <CInputGroupText className={'bg-info text-white'}>
-                            Search Event
+                           <CLink to="./detailpage"> Search Event</CLink>
                           </CInputGroupText>
                         </CInputGroupPrepend>
                         <CInput type="email" id="username" name="username" autoComplete="name"/>
