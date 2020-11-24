@@ -11,8 +11,7 @@ import UserSignUp from './views/User/Signup';
 import CustomerSignUp from './views/Customer/Signup';
 import Events from './views/User/events';
 import Profile from './views/User/profile';
-// import Venues from './views/venues';
-// import Vendors from './views/vendors';
+import VendorDashboard from './views/Customer/VendorDashboard/VendorDashboard'
 import UpdateProfile from './views/User/updateProfile';
 
 class App extends Component {
@@ -30,8 +29,7 @@ class App extends Component {
             <Route  path="/user/events" name="User events" component={Events} />
             <Route  path="/user/profile" name="User profile" component={Profile} />
             <Route  path="/user/edit" name="Update profile" component={UpdateProfile} />
-            {/* <Route  path="/vendors" name="Vendors" component={Vendors} />
-            <Route  path="/venues" name="Venues" component={Venues} /> */}
+            <Route  path="/vendordashboard" name="VendorDashboard" component={VendorDashboard} />
             <Route  path="/customer/signup" name="Customer Login" component={CustomerSignUp} />
           </Switch>
       </Router>    

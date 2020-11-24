@@ -95,7 +95,7 @@ class CustomerLogin extends Component {
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                      <CLink to="/"  style={{color:'pink'}}>Login</CLink>
+                      <CLink to="/vendordashboard"  style={{color:'pink'}}>Login</CLink>
                       </CCol>
                       <CCol xs="6" className="text-right">
                       <CHeaderNavLink to="/" style={{color:'pink'}}>Forgot password?</CHeaderNavLink>
