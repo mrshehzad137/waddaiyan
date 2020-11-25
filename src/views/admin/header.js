@@ -9,14 +9,12 @@ import {
   CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-import logo from '../assets/img/logo.png'
+import logo from '../../assets/img/logo.png'
 
 
-import { 
-  TheHeaderDropdown,
-}  from './index'
+import AdminHeaderDropDown from './headerDropdown';
 
-const TheHeader = () => {
+const HeaderAdmin = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector(state => state.sidebarShow)
 
@@ -36,38 +34,38 @@ const TheHeader = () => {
   return (
     <CHeader withSubheader>
       
-      <CHeaderBrand className="mx-auto d-lg-none" to="/">
+      <CHeaderBrand className="mx-auto d-lg-none" >
        
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
       
       <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="/"><img src={logo} width="150"/></CHeaderNavLink>
+          <CHeaderNavLink to="/Admindashboard"><img src={logo} width="150"/></CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="/user/venue" className="blinking1">Venues</CHeaderNavLink>
+          <CHeaderNavLink to="/Admindashboard" className="blinking1">Home</CHeaderNavLink>
+        </CHeaderNavItem>
+        <CHeaderNavItem className="px-3" >
+          <CHeaderNavLink to="/Admindashboard/venue" className="blinking1">Venues</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem  className="px-3">
-          <CHeaderNavLink to="/user/vendor" className="blinking2">Vendors</CHeaderNavLink>
+          <CHeaderNavLink to="/Admindashboard/booking" className="blinking2">Booking</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem  className="px-3">
-          <CHeaderNavLink to="/user/events" className="blinking3">My Events</CHeaderNavLink>
+          <CHeaderNavLink to="/Admindashboard/customer" className="blinking2">Customer</CHeaderNavLink>
         </CHeaderNavItem>
-        <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/user/profile" className="blinking4">Settings</CHeaderNavLink>
+        <CHeaderNavItem  className="px-3">
+          <CHeaderNavLink to="/Admindashboard/user" className="blinking2">User</CHeaderNavLink>
         </CHeaderNavItem>
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-      <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/customer/login" className="blinking4">Vendor Login</CHeaderNavLink>
-        </CHeaderNavItem>
-        <TheHeaderDropdown/>
+        <AdminHeaderDropDown/>
         </CHeaderNav>
-        {/* <CButton><CHeaderNavLink to="/user/login" style={{display:user?'none':'inline'}}>Login</CHeaderNavLink></CButton> */}
+
     </CHeader>
   )
 }
 
-export default TheHeader
+export default HeaderAdmin

@@ -9,18 +9,18 @@ import {
   CImg
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import AuthService from "../views/AuthTest";
+import { useHistory } from 'react-router-dom';
 
-const TheHeaderDropdown = () => {
-  const Auth = new AuthService();
-
-  const logoutHandler = ()  =>{
-    alert("sdscsdffdf")
-    Auth.logout();
+const AdminHeaderDropDown = () => {
+    const history = useHistory();
     
-    window.location.reload(false);
+    // this.history.push('/admin/login');
+
+    const logoutHandler = ()  => {
+        history.push('/admin/login')
+        window.location.reload(false);
+
   }
-  
   return (
     <CDropdown
       inNav
@@ -46,25 +46,21 @@ const TheHeaderDropdown = () => {
           <strong>Settings</strong>
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon name="cil-user" className="mfe-2" /><CHeaderNavLink to="/user/profile">Profile</CHeaderNavLink>
+          <CIcon name="cil-user" className="mfe-2" /><CHeaderNavLink to="#">Profile</CHeaderNavLink>
         </CDropdownItem>
         <CDropdownItem>
           <CIcon name="cil-credit-card" className="mfe-2" /> 
           Payments
           <CBadge color="secondary" className="mfs-auto">$10</CBadge>
         </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name="cil-file" className="mfe-2" /> 
-          <CHeaderNavLink to="/user/events">Events</CHeaderNavLink>
-          <CBadge color="primary" className="mfs-auto">2</CBadge>
-        </CDropdownItem>
         <CDropdownItem divider />
         <CDropdownItem>
-        <CHeaderNavLink onClick= {logoutHandler}>Logout</CHeaderNavLink>
+        <CHeaderNavLink onClick={logoutHandler}>Logout</CHeaderNavLink>
+    
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
   )
 }
 
-export default TheHeaderDropdown
+export default AdminHeaderDropDown

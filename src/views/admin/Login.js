@@ -32,10 +32,7 @@ class AdminLogin extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() {
-    if (this.auth.loggedIn())
-      this.props.history.replace('/Admindashboard');
-  }
+  
 
 
   onChange(e) {
