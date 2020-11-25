@@ -25,6 +25,7 @@ import CIcon from '@coreui/icons-react'
 import adminImage from '../../assets/img/imag1.png'
 import TheHeader from '../../containers/TheHeader';
 import myevent from '../../assets/img/myevent.jpg'
+import withAuth from '../withAuth';
 
 class Events extends Component {
   
@@ -40,12 +41,7 @@ class Events extends Component {
         this.onChange=this.onChange.bind(this);
     }
 
-    componentWillMount(){
-        if(this.auth.loggedIn())
-            this.props.history.replace('/AdminDashboard');
-    }
-      
-
+    
     onChange(e){
             
             this.setState({[e.target.name]: e.target.value});
@@ -183,4 +179,4 @@ class Events extends Component {
   }
 }
 
-export default Events;
+export default withAuth(Events);

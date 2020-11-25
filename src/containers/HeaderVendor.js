@@ -13,10 +13,10 @@ import logo from '../assets/img/logo.png'
 
 
 import { 
-  TheHeaderDropdown,
+  VendorHeaderDropDown,
 }  from './index'
 
-const TheHeader = () => {
+const HeaderVendor = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector(state => state.sidebarShow)
 
@@ -36,38 +36,29 @@ const TheHeader = () => {
   return (
     <CHeader withSubheader>
       
-      <CHeaderBrand className="mx-auto d-lg-none" to="/">
+      <CHeaderBrand className="mx-auto d-lg-none" >
        
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
       
       <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="/"><img src={logo} width="150"/></CHeaderNavLink>
+          <CHeaderNavLink ><img src={logo} width="150"/></CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="/user/venue" className="blinking1">Venues</CHeaderNavLink>
+          <CHeaderNavLink to="" className="blinking1">Venues</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem  className="px-3">
-          <CHeaderNavLink to="/user/vendor" className="blinking2">Vendors</CHeaderNavLink>
-        </CHeaderNavItem>
-        <CHeaderNavItem  className="px-3">
-          <CHeaderNavLink to="/user/events" className="blinking3">My Events</CHeaderNavLink>
-        </CHeaderNavItem>
-        <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/user/profile" className="blinking4">Settings</CHeaderNavLink>
+          <CHeaderNavLink to="" className="blinking2">Add Venue</CHeaderNavLink>
         </CHeaderNavItem>
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-      <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/customer/login" className="blinking4">Vendor Login</CHeaderNavLink>
-        </CHeaderNavItem>
-        <TheHeaderDropdown/>
+        <VendorHeaderDropDown/>
         </CHeaderNav>
 
     </CHeader>
   )
 }
 
-export default TheHeader
+export default HeaderVendor

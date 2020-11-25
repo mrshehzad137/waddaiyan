@@ -13,6 +13,7 @@ import TheHeader from '../../../containers/TheHeader';
 import hallimage from '../../../assets/img/det.webp'
 import { AiOutlineStar, AiFillPhone } from "react-icons/ai";
 import img from '../../../assets/img/profile.png'
+import withAuth from '../../withAuth';
 
 const data = [
     {
@@ -131,4 +132,4 @@ class StaticDetailPage extends Component {
         );
     }
 }
-export default StaticDetailPage;
+export default withAuth(StaticDetailPage);

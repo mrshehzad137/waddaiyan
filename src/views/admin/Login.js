@@ -19,7 +19,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import adminImage from '../../assets/img/imag1.png'
-class UserLogin extends Component {
+class AdminLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +34,7 @@ class UserLogin extends Component {
 
   componentWillMount() {
     if (this.auth.loggedIn())
-      this.props.history.replace('/');
+      this.props.history.replace('/Admindashboard');
   }
 
 
@@ -49,13 +49,11 @@ class UserLogin extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    this.auth.login('/api/user/signin', data)
-      .then(res => {
-        this.props.history.replace('/');
-      })
-      .catch(err => {
-        alert("User name or password incorrect");
-      })
+     if(data.email=='admin@example.com' && data.password=='admin'){
+          this.props.history.replace('/Admindashboard');
+     }else{
+       alert("Invalid admin user name password");
+     }
   }
 
   render() {
@@ -68,7 +66,7 @@ class UserLogin extends Component {
                 <CCard className="p-4">
                   <CCardBody>
                     <CForm>
-                      <h1 style={{ color: 'pink' }}>Customer Login</h1>
+                      <h1 style={{ color: 'pink' }}>Admin Login</h1>
                       <p className="text-muted">Sign In to your account</p>
                       <CInputGroup className="mb-3">
                         <CInputGroupPrepend>
@@ -92,25 +90,15 @@ class UserLogin extends Component {
                         <CCol xs="6">
                           <CButton onClick={this.submit} style={{ color: 'pink' }}>Login</CButton>
                         </CCol>
-                        <CCol xs="6" className="text-right">
-                          <CHeaderNavLink to="/user/signup" style={{ color: 'pink' }}>Signup</CHeaderNavLink>
-                        </CCol>
                       </CRow>
-                      <CRow>
+                      {/* <CRow>
                         <CCol xs="8">
                           <p>Are you commercial users ?</p>
                         </CCol>
                         <CCol xs="4" className="text-left">
                           <CHeaderNavLink to="/customer/login" style={{ color: 'pink' }}>Click Here?</CHeaderNavLink>
                         </CCol>
-                      </CRow>
-                      <CRow>
-                      <CCol xs="8">
-                      </CCol>
-                      <CCol xs="4" className="text-left">
-                        <CHeaderNavLink to="/admin/login" style={{color:'pink'}}>Admin</CHeaderNavLink>
-                      </CCol>
-                    </CRow>
+                      </CRow> */}
                     </CForm>
                   </CCardBody>
                 </CCard>
@@ -128,4 +116,4 @@ class UserLogin extends Component {
   }
 }
 
-export default UserLogin;
+export default AdminLogin;

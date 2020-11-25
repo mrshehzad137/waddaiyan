@@ -25,7 +25,7 @@ import hallimage1 from '../../../assets/img/hall1.webp'
 import hallimage2 from '../../../assets/img/hall2.webp'
 import hallimage3 from '../../../assets/img/hall3.webp'
 import bestprice from '../../../assets/img/book-venue-shape-5.svg'
-
+import withAuth from '../../withAuth';
 import TheHeader from '../../../containers/TheHeader';
 
 class Venue extends Component {
@@ -42,10 +42,10 @@ class Venue extends Component {
         this.onChange=this.onChange.bind(this);
     }
 
-    componentWillMount(){
-        if(this.auth.loggedIn())
-            this.props.history.replace('/AdminDashboard');
-    }
+    // componentWillMount(){
+    //     if(this.auth.loggedIn())
+    //         this.props.history.replace('/AdminDashboard');
+    // }
       
 
     onChange(e){
@@ -291,4 +291,4 @@ class Venue extends Component {
   }
 }
 
-export default Venue;
+export default withAuth(Venue);

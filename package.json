@@ -62,5 +62,6 @@
   "engines": {
     "node": ">=10",
     "npm": ">=6"
-  }
+  },
+  "proxy":"https://waddaiyan-backend.herokuapp.com"
 }

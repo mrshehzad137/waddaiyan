@@ -18,11 +18,13 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import adminImage from '../../assets/img/imag1.png'
+import Axios from 'axios';
 class CustomerSignUp extends Component {
   
   constructor(props){
     super(props);
     this.state={
+        name:'',
         email:'',
         password:'',
     }
@@ -34,7 +36,7 @@ class CustomerSignUp extends Component {
 
     componentWillMount(){
         if(this.auth.loggedIn())
-            this.props.history.replace('/AdminDashboard');
+            this.props.history.replace('/vendordashboard');
     }
       
 
@@ -48,14 +50,14 @@ class CustomerSignUp extends Component {
         e.preventDefault();
             
                 const data = {
-
+                    name:this.state.name,
                     email:this.state.email,
                     password:this.state.password
                 };
 
-                this.auth.login('https://fyp-ssrs.herokuapp.com/api/admin/signin',data)
+                Axios.post('/api/vendor/signup',data)
                 .then(res => {
-                    this.props.history.replace('/AdminDashboard');
+                    this.props.history.replace('/customer/login');
                 })
                 .catch(err => {
                     alert("User name or password incorrect");
@@ -81,13 +83,15 @@ class CustomerSignUp extends Component {
                         <CIcon name="cil-user" />
                       </CInputGroupText>
                     </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Username" autoComplete="username" />
+                    <CInput type="text" placeholder="Username" autoComplete="username" 
+                    onChange={(event) => this.setState({name: event.target.value})}/>
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupPrepend>
                       <CInputGroupText>@</CInputGroupText>
                     </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Email" autoComplete="email" />
+                    <CInput type="text" placeholder="Email" autoComplete="email" 
+                    onChange={(event) => this.setState({email: event.target.value})}/>
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupPrepend>
@@ -95,7 +99,8 @@ class CustomerSignUp extends Component {
                         <CIcon name="cil-lock-locked" />
                       </CInputGroupText>
                     </CInputGroupPrepend>
-                    <CInput type="password" placeholder="Password" autoComplete="new-password" />
+                    <CInput type="password" placeholder="Password" autoComplete="new-password" 
+                        onChange={(event) => this.setState({password: event.target.value})}/>
                   </CInputGroup>
                   <CInputGroup className="mb-4">
                     <CInputGroupPrepend>
@@ -105,7 +110,7 @@ class CustomerSignUp extends Component {
                     </CInputGroupPrepend>
                     <CInput type="password" placeholder="Repeat password" autoComplete="new-password" />
                   </CInputGroup>
-                  <CButton color="success" block>Create Account</CButton>
+                  <CButton color="success" block onClick={this.submit}>Create Account</CButton>
                 </CForm>
               </CCardBody>
             </CCard>
