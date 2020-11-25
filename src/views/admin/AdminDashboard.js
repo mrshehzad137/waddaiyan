@@ -14,15 +14,15 @@ import {
     CLink,
     CButton
 } from '@coreui/react'
-import withAuth from '../../withAuth';
-import logouser from '../../../assets/img/profile.png'
+// import withAuth from '../../withAuth';
+// import logouser from '../../../assets/img/profile.png'
 import CIcon from '@coreui/icons-react';
-import TheHeader from '../../../containers/HeaderVendor';
+import TheHeader from '../../containers/HeaderVendor';
 const data = [
     { name: "Hammad Mustafa", date: "12/3/2020", Email: "hammadmustafa39@gmail.com", event: "Wedding",eventlocation: "Lahore,Wapda Town" ,description: "It is my wedding",timeanddate: "2020-12-10T19:00:00.000Z",venuename: "Le Grand Palace",venuedescription: "It is very beautiful",},
     { name: "Shahzad Kareem", date: "9/3/2020", Email: "Shahzadkareem22@gmail.com", event: "Birthday" ,eventlocation: "Lahore,Wapda Town",description: "It is my wedding",timeanddate: "2020-12-10T19:00:00.000Z",venuename: "Le Grand Palace",venuedescription: "It is very beautiful",}
 ]
-class VendorDashboard extends Component {
+class AdminDashboard extends Component {
     render() {
         return (
             <body  >
@@ -38,7 +38,7 @@ class VendorDashboard extends Component {
                                     <CCardBody >
                                         <div>
                                         <div style={{ display: 'flex'}}>
-                                            <img src={logouser} style={{width:60, height:60}}></img>
+                                            {/* <img src="" style={{width:60, height:60}}></img> */}
                                             
                                                 <h4 style={{fontSize:14,marginTop:20,marginLeft:20}} >{x.name}</h4>
                                                 <h4 style={{fontSize:14,marginTop:20,marginLeft:200}}> Email:   {x.Email}</h4>
@@ -82,7 +82,7 @@ class VendorDashboard extends Component {
 // SSRSHome.propTypes = propTypes;
 // SSRSHome.defaultProps = defaultProps;
 
-export default withAuth(VendorDashboard);
+export default AdminDashboard;
 
 
 {/* <div className="row">

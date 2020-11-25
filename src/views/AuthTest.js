@@ -15,7 +15,15 @@ export default class AuthService {
             method: 'POST',
             body: JSON.stringify(data)
         });
-        this.setToken(response.token); // Setting the token in localStorage
+        this.setToken(response.token);
+        const profile = await this.getProfile(response.token);
+        console.log("profile",profile);
+        // alert(profile);
+        localStorage.setItem('name', profile.name);
+        localStorage.setItem('email', profile.email);
+        localStorage.setItem('type', profile.type);
+        localStorage.setItem('uid', profile.userId);
+        // Setting the token in localStorage
         return Promise.resolve(response);
     }
 
@@ -51,7 +59,7 @@ export default class AuthService {
 
     logout() {
         // Clear user token and profile data from localStorage
-        localStorage.removeItem('id_token');
+        localStorage.clear();
         
     }
 

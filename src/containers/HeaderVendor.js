@@ -13,7 +13,7 @@ import logo from '../assets/img/logo.png'
 
 
 import { 
-  TheHeaderDropdown,
+  VendorHeaderDropDown,
 }  from './index'
 
 const HeaderVendor = () => {
@@ -54,7 +54,7 @@ const HeaderVendor = () => {
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        <TheHeaderDropdown/>
+        <VendorHeaderDropDown/>
         </CHeaderNav>
 
     </CHeader>

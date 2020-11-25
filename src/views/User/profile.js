@@ -10,6 +10,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import TheHeader from '../../containers/TheHeader';
+import withAuth from '../withAuth';
 class Profile extends Component {
   
   constructor(props){
@@ -24,10 +25,10 @@ class Profile extends Component {
         this.onChange=this.onChange.bind(this);
     }
 
-    componentWillMount(){
-        if(this.auth.loggedIn())
-            this.props.history.replace('/AdminDashboard');
-    }
+    // componentWillMount(){
+    //     if(this.auth.loggedIn())
+    //         this.props.history.replace('/AdminDashboard');
+    // }
       
 
     onChange(e){
@@ -116,4 +117,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withAuth(Profile);

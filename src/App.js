@@ -13,6 +13,8 @@ import Events from './views/User/events';
 import Profile from './views/User/profile';
 import VendorDashboard from './views/Customer/VendorDashboard/VendorDashboard'
 import UpdateProfile from './views/User/updateProfile';
+import AdminDashboard from './views/admin/AdminDashboard';
+import AdminLogin from './views/admin/Login';
 
 class App extends Component {
   render() {
@@ -24,6 +26,8 @@ class App extends Component {
             <Route  path="/user/venue" name="Venue" component={Venue} /> 
             <Route  path="/user/staticdetailPage" name="StaticDetailPage" component={StaticDetailPage} />  
             <Route  path="/user/login" name="User Login" component={UserLogin} />
+            <Route  path="/admin/login" name="User Login" component={AdminLogin} />
+            <Route  path="/Admindashboard" name="User Login" component={AdminDashboard} />
             <Route  path="/customer/login" name="Customer Login" component={CustomerLogin} />
             <Route  path="/user/signup" name="User Login" component={UserSignUp} />
             <Route  path="/user/events" name="User events" component={Events} />

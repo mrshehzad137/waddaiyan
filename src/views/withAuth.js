@@ -18,7 +18,7 @@ return class AuthWrapped extends React.Component{
     componentWillMount(){
         if(!Auth.loggedIn()){
 
-            this.props.history.replace('/');
+            this.props.history.replace('/user/login');
 
         }else{
             try{
@@ -29,7 +29,7 @@ return class AuthWrapped extends React.Component{
             }
             catch(err){
                 Auth.logout();
-                this.props.history.replace('/');
+                this.props.history.replace('/user/login');
             }
         }
     }

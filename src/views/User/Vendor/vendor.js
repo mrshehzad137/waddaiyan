@@ -27,6 +27,7 @@ import hallimage3 from '../../../assets/img/vendor4.webp'
 import bestprice from '../../../assets/img/book-venue-shape-5.svg'
 
 import TheHeader from '../../../containers/TheHeader';
+import withAuth from '../../withAuth';
 
 class vendor extends Component {
   
@@ -42,10 +43,10 @@ class vendor extends Component {
         this.onChange=this.onChange.bind(this);
     }
 
-    componentWillMount(){
-        if(this.auth.loggedIn())
-            this.props.history.replace('/AdminDashboard');
-    }
+    // componentWillMount(){
+    //     if(this.auth.loggedIn())
+    //         this.props.history.replace('/AdminDashboard');
+    // }
       
 
     onChange(e){
@@ -291,4 +292,4 @@ class vendor extends Component {
   }
 }
 
-export default vendor;
+export default withAuth(vendor);

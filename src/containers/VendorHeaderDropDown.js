@@ -9,18 +9,20 @@ import {
   CImg
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+
 import AuthService from "../views/AuthTest";
 
-const TheHeaderDropdown = () => {
+
+  
+
+const VendorHeaderDropDown = () => {
   const Auth = new AuthService();
 
-  const logoutHandler = ()  =>{
-    alert("sdscsdffdf")
+  const logoutHandler = ()  => {
     Auth.logout();
-    
-    window.location.reload(false);
-  }
   
+     window.location.reload(false);
+  }
   return (
     <CDropdown
       inNav
@@ -60,7 +62,7 @@ const TheHeaderDropdown = () => {
         </CDropdownItem>
         <CDropdownItem divider />
         <CDropdownItem>
-        <CHeaderNavLink onClick= {logoutHandler}>Logout</CHeaderNavLink>
+        <CHeaderNavLink onClick={logoutHandler}>Logout</CHeaderNavLink>
     
         </CDropdownItem>
       </CDropdownMenu>
@@ -68,4 +70,4 @@ const TheHeaderDropdown = () => {
   )
 }
 
-export default TheHeaderDropdown
+export default VendorHeaderDropDown
