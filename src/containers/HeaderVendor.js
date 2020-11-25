@@ -46,10 +46,10 @@ const HeaderVendor = () => {
           <CHeaderNavLink ><img src={logo} width="150"/></CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="" className="blinking1">Venues</CHeaderNavLink>
+          <CHeaderNavLink to="/user/venuelist" className="blinking1">Venues</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem  className="px-3">
-          <CHeaderNavLink to="" className="blinking2">Add Venue</CHeaderNavLink>
+          <CHeaderNavLink to="/user/AddVenue" className="blinking2">Add Venue</CHeaderNavLink>
         </CHeaderNavItem>
       </CHeaderNav>
 

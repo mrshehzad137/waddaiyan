@@ -5,6 +5,8 @@ import Home from './containers/Home';
 import Vendors from './views/User/Vendor/vendor'
 import Venue from './views/User/Venue/Venue'
 import StaticDetailPage from './views/User/Vendor/StaticDetailPage';
+import AddVenue from './views/User/Vendor/AddVenue';
+import Venuelist from './views/User/Vendor/Venuelist';
 import UserLogin from './views/User/Login';
 import CustomerLogin from './views/Customer/Login';
 import UserSignUp from './views/User/Signup';
@@ -29,6 +31,8 @@ class App extends Component {
             <Route  path="/user/vendor" name="Vendors" component={Vendors} /> 
             <Route  path="/user/venue" name="Venue" component={Venue} /> 
             <Route  path="/user/staticdetailPage" name="StaticDetailPage" component={StaticDetailPage} />  
+            <Route  path="/user/AddVenue" name="AddVenue" component={AddVenue} />
+            <Route  path="/user/venuelist" name="Venuelist" component={Venuelist} />  
             <Route  path="/user/login" name="User Login" component={UserLogin} />
             <Route  path="/admin/login" name="User Login" component={AdminLogin} />
             <Route exact path="/Admindashboard" name="User Login" component={AdminDashboard} />
