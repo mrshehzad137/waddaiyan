@@ -89,7 +89,7 @@ class Venue extends Component {
 
                            <div style={{justifyContent:'space-between' ,display:'flex',padding:8,paddingTop:10}}>
                            <p style={{color:'#E92E77',fontWeight:'bold'}}>{x.description}</p>
-                           <img src={bestprice}></img>
+                           <CLink to={`./booking/${x._id}`} > <CButton color="success" style={{ width: 100, height: 35 }} >Book</CButton></CLink>
                            </div>
             </CCardFooter>
           </CCard>

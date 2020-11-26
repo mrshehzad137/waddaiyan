@@ -76,7 +76,7 @@ class Booking extends Component {
                                             
                                                 <h4 style={{fontSize:14,marginTop:20,marginLeft:20,color:'Red'}} >{x.user[0].name}</h4>
                                                 <h4 style={{fontSize:14,marginTop:20,marginLeft:200}}> <span style={{color:'Blue'}}>Email:</span>   {x.user[0].email}</h4>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:180}}> <span style={{color:'Blue'}}>Date: </span>    {x.timeanddate.substring(0, 10)}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:180}}> <span style={{color:'Blue'}}>Date: </span>    {(x.timeanddate)?x.timeanddate.substring(0, 10):''}</h4>
                                             </div>
                                             <div style={{ display: 'flex' }}>
                                                 <h4 style={{fontSize:14,marginTop:20,marginLeft:80}} ><span style={{color:'Blue'}}>Event Category:</span>  {x.event.eventCategory}</h4>
@@ -85,7 +85,7 @@ class Booking extends Component {
                                             </div>
                                             <h4 style={{fontSize:14,marginTop:20,marginLeft:80,lineHeight:0}}><span style={{color:'Blue'}}> Descrption:</span>      {x.event.description}</h4>
                                             <div style={{ display: 'flex' }}>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:200}} ><span style={{color:'Blue'}}>Venue:</span>  {x.venue.name}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:200}} ><span style={{color:'Blue'}}>Venue:</span>  {(x.venue && x.venue.name)?x.venue.name:''}</h4>
                                                
                                             </div>
                                         

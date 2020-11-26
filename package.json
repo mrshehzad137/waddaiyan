@@ -10,6 +10,8 @@
     "@coreui/react": "^3.0.3",
     "@coreui/react-chartjs": "^1.0.0",
     "@coreui/utils": "^1.3.1",
+    "@material-ui/core": "^4.11.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
@@ -63,5 +65,5 @@
     "node": ">=10",
     "npm": ">=6"
   },
-  "proxy":"https://waddaiyan-backend.herokuapp.com"
+  "proxy": "https://waddaiyan-backend.herokuapp.com"
 }

@@ -58,6 +58,8 @@ class vendor extends Component {
                       <div style={{ lineHeight: 0, marginBottom: 5, marginLeft: 0, marginRight: 0, padding: 8 }}>
                         <p>Role:  {x.role}</p>
                         <p>Email:{x.email}</p>
+                        <CLink to={`./bookingvendor/${x._id}`} > <CButton onClick={this.passId} color="success" style={{ width: 100, height: 35,marginLeft:180,marginTop:20 }} >Book</CButton></CLink>
+
                       </div>
                     </div>
                   </CCardFooter>

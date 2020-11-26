@@ -34,32 +34,32 @@ class Home extends Component {
     }
   }
 
-  componentDidMount() {
-    Axios.get('/api/vendor/getall/vendors')
-      .then(res => {
-        this.setState({ data: res.data.vendorList })
-        console.log(this.state.data)
-      })
+  // componentDidMount() {
+  //   Axios.get('/api/vendor/getall/vendors')
+  //     .then(res => {
+  //       this.setState({ data: res.data.vendorList })
+  //       console.log(this.state.data)
+  //     })
 
-      .catch(err => {
-        alert("Venue get Failed");
+  //     .catch(err => {
+  //       alert("Venue get Failed");
 
-      })
-  }
+  //     })
+  // }
 
 
-  componentDidMount (){
-    Axios.get('/api/vendor/getall/venue')
-    .then(res => {
-     this.setState({data1:res.data.venueList})
-     console.log(this.state.data)
-    })
+//   componentDidMount (){
+//     Axios.get('/api/vendor/getall/venue')
+//     .then(res => {
+//      this.setState({data1:res.data.venueList})
+//      console.log(this.state.data)
+//     })
     
-    .catch(err => {
-        alert("Venue get Failed");
+//     .catch(err => {
+//         alert("Venue get Failed");
         
-    })
-}
+//     })
+// }
   render() {
     return (
         <body className="app" >

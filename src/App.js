@@ -4,7 +4,9 @@ import './scss/style.scss';
 import Home from './containers/Home';
 import Vendors from './views/User/Vendor/vendor'
 import Venue from './views/User/Venue/Venue'
+import booking from './views/User/Venue/booking'
 import StaticDetailPage from './views/User/Vendor/StaticDetailPage';
+import bookingvendor from './views/User/Vendor/bookingvendor';
 import AddVenue from './views/User/Vendor/AddVenue';
 import Venuelist from './views/User/Vendor/Venuelist';
 import UserLogin from './views/User/Login';
@@ -43,6 +45,8 @@ class App extends Component {
             <Route  path="/customer/login" name="Customer Login" component={CustomerLogin} />
             <Route  path="/user/signup" name="User Login" component={UserSignUp} />
             <Route  path="/user/events" name="User events" component={Events} />
+            <Route  path="/user/booking/:id" name="booking" component={booking} />
+            <Route exact path="/user/bookingvendor/:id" name="bookingvendor" component={bookingvendor} />
             <Route  path="/user/profile" name="User profile" component={Profile} />
             <Route  path="/user/edit" name="Update profile" component={UpdateProfile} />
             <Route  path="/vendordashboard" name="VendorDashboard" component={VendorDashboard} />
