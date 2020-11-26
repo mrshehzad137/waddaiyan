@@ -60,7 +60,7 @@ class StaticDetailPage extends Component {
                                         </div>
                                         <div style={{ justifyContent: 'space-between', display: 'flex', lineHeight: 0 }}>
                                             <p style={{ fontWeight: 'bold', float: 'left', color: 'green', paddingTop: 20, fontSize: 20 }}><AiFillPhone />Contact</p>
-                                            <CButton color="success" style={{ width: 200, height: 45 }} >Book</CButton>
+                                           
                                         </div>
                                     </CCardBody>
                                 </CCard>

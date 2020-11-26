@@ -61,7 +61,6 @@ const TheHeader = () => {
 
       <CHeaderNav className="px-3">
       <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/customer/login" className="blinking4">Vendor Login</CHeaderNavLink>
         </CHeaderNavItem>
         <TheHeaderDropdown/>
         </CHeaderNav>
