@@ -48,7 +48,7 @@ class VendorDashboard extends Component {
 
     submit(id){            
                 const data = {
-                    bookingid: id,
+                    bookingid: id,    
                      status: "Accepted"
                 };
     
