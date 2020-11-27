@@ -15,7 +15,7 @@ const TheHeaderDropdown = () => {
   const Auth = new AuthService();
 
   const logoutHandler = ()  =>{
-    alert("sdscsdffdf")
+
     Auth.logout();
     
     window.location.reload(false);

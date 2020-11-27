@@ -90,7 +90,7 @@ class CustomerSignUp extends Component {
                     <CInputGroupPrepend>
                       <CInputGroupText>@</CInputGroupText>
                     </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Email" autoComplete="email" 
+                    <CInput type="email" placeholder="Email" autoComplete="email" 
                     onChange={(event) => this.setState({email: event.target.value})}/>
                   </CInputGroup>
                   <CInputGroup className="mb-3">

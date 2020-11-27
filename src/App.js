@@ -5,7 +5,8 @@ import Home from './containers/Home';
 import Vendors from './views/User/Vendor/vendor'
 import Venue from './views/User/Venue/Venue'
 import booking from './views/User/Venue/booking'
-import StaticDetailPage from './views/User/Vendor/StaticDetailPage';
+import StaticVendor from './views/User/Vendor/StaticVendor';
+import StaticDetailPage from './views/User/Venue/StaticDetailPage';
 import bookingvendor from './views/User/Vendor/bookingvendor';
 import AddVenue from './views/User/Vendor/AddVenue';
 import Venuelist from './views/User/Vendor/Venuelist';
@@ -15,6 +16,7 @@ import UserSignUp from './views/User/Signup';
 import CustomerSignUp from './views/Customer/Signup';
 import Events from './views/User/events';
 import Profile from './views/User/profile';
+import Bookinguser from './views/User/Booking';
 import VendorDashboard from './views/Customer/VendorDashboard/VendorDashboard'
 import UpdateProfile from './views/User/updateProfile';
 import AdminDashboard from './views/admin/AdminDashboard';
@@ -32,7 +34,8 @@ class App extends Component {
             <Route exact path="/" name="Home" component={Home}/>
             <Route  path="/user/vendor" name="Vendors" component={Vendors} /> 
             <Route  path="/user/venue" name="Venue" component={Venue} /> 
-            <Route  path="/user/staticdetailPage" name="StaticDetailPage" component={StaticDetailPage} />  
+            <Route  path="/user/staticvendor/:id" name="StaticVendor" component={StaticVendor} /> 
+            <Route  path="/user/StaticDetailPage/:id" name="StaticDetailPage" component={StaticDetailPage} />  
             <Route  path="/user/AddVenue" name="AddVenue" component={AddVenue} />
             <Route  path="/user/venuelist" name="Venuelist" component={Venuelist} />  
             <Route  path="/user/login" name="User Login" component={UserLogin} />
@@ -48,6 +51,7 @@ class App extends Component {
             <Route  path="/user/booking/:id" name="booking" component={booking} />
             <Route exact path="/user/bookingvendor/:id" name="bookingvendor" component={bookingvendor} />
             <Route  path="/user/profile" name="User profile" component={Profile} />
+             <Route  path="/user/Bookinguser" name="Bookinguser" component={Bookinguser} />
             <Route  path="/user/edit" name="Update profile" component={UpdateProfile} />
             <Route  path="/vendordashboard" name="VendorDashboard" component={VendorDashboard} />
             <Route  path="/customer/signup" name="Customer Login" component={CustomerSignUp} />
