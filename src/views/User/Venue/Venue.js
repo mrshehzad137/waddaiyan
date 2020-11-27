@@ -73,7 +73,7 @@ class Venue extends Component {
             <CCol xs="12" sm="6" md="3">
           <CCard>
             <CCardBody style={{padding:0}}>
-            <CLink to="./staticdetailPage"> <img src={datapicture[Math.floor(Math.random() * 12)]} style={{width:300,height:200,}}></img></CLink>
+            <CLink to={`./staticdetailPage/${x._id}`}> <img src={datapicture[Math.floor(Math.random() * 12)]} style={{width:300,height:200,}}></img></CLink>
             </CCardBody>
             <CCardFooter  style={{padding:0}}>
                 <div style={{borderBottom:'1px dashed grey'}}>

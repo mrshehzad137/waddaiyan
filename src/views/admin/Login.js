@@ -71,7 +71,7 @@ class AdminLogin extends Component {
                             <CIcon name="cil-user" />
                           </CInputGroupText>
                         </CInputGroupPrepend>
-                        <CInput type="text" placeholder="Username" autoComplete="username"
+                        <CInput type="email" placeholder="Username" autoComplete="username"
                           onChange={(event) => this.setState({ email: event.target.value })} />
                       </CInputGroup>
                       <CInputGroup className="mb-4">
