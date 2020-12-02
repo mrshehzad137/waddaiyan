@@ -19,10 +19,6 @@ import logouser from '../../../assets/img/profile.png'
 import CIcon from '@coreui/icons-react';
 import TheHeader from '../../../containers/HeaderVendor';
 import Axios from 'axios'
-const data = [
-    { name: "Hammad Mustafa", date: "12/3/2020", Email: "hammadmustafa39@gmail.com", event: "Wedding", eventlocation: "Lahore,Wapda Town", description: "It is my wedding", timeanddate: "2020-12-10T19:00:00.000Z", venuename: "Le Grand Palace", venuedescription: "It is very beautiful", },
-    { name: "Shahzad Kareem", date: "9/3/2020", Email: "Shahzadkareem22@gmail.com", event: "Birthday", eventlocation: "Lahore,Wapda Town", description: "It is my wedding", timeanddate: "2020-12-10T19:00:00.000Z", venuename: "Le Grand Palace", venuedescription: "It is very beautiful", }
-]
 class VendorDashboard extends Component {
     constructor(props) {
         super(props);
@@ -30,8 +26,9 @@ class VendorDashboard extends Component {
             staticdata: [],
         }
         this.auth = new AuthService();
-        this.approve= this.approve.bind(this);
-        this.reject= this.reject.bind(this);
+        this.submit= this.submit.bind(this);
+        this.submit1= this.submit1.bind(this);
+ 
 
 
     }
@@ -48,40 +45,39 @@ class VendorDashboard extends Component {
 
             })
     }
-    approve(id) {
-        console.log(id,"id here hammad")
+
+    submit(id){            
+                const data = {
+                    bookingid: id,    
+                     status: "Accepted"
+                };
+    
+                Axios.post('/api/user//booking/accept-reject',data)
+                .then(res => {
+                   alert("Status Created Successfully")
+                })
+                .catch(err => {
+                    alert("Status Created Failed");
+                    
+                })
+    
+    }
+    submit1(id){            
         const data = {
             bookingid: id,
-            status: "Accepted"
-        }
-        Axios.post('/api/user//booking/accept-reject', data)
-            .then(res => {
-                // alert("Status Change Successfully")
-            })
+             status: "Rejected"
+        };
 
-            .catch(err => {
-                alert("Venue get Failed");
+        Axios.post('/api/user//booking/accept-reject',data)
+        .then(res => {
+           alert("Status Created Successfully")
+        })
+        .catch(err => {
+            alert("Status Created Failed");
+            
+        })
 
-            })
-
-    }
-    reject (id) {
-        console.log(id,"id here hammad")
-        const data = {
-            bookingid: id,
-            status: "Rejected"
-        }
-        Axios.post('/api/user//booking/accept-reject', data)
-            .then(res => {
-                // alert("Status Change Successfully")
-            })
-
-            .catch(err => {
-                alert("Venue get Failed");
-
-            })
-
-    }
+}
     render() {
         return (
             <body  >
@@ -116,19 +112,19 @@ class VendorDashboard extends Component {
                                             {x.status === "Created" ?
                                                 <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
 
-                                                    <CButton onClick={this.approve(x._id)} color="success" style={{ width: 200, height: 35, marginRight: 20 }} >Approve</CButton>
-                                                    <CButton onClick={this.reject(x._id)} color="danger" style={{ width: 200, height: 35 }} >Reject</CButton>
+                                                    <CButton onClick={() =>this.submit(x._id)} color="success" style={{ width: 200, height: 35, marginRight: 20 }} >Approve</CButton>
+                                                    <CButton onClick={() =>this.submit1(x._id)} color="danger" style={{ width: 200, height: 35 }} >Reject</CButton>
                                                 </div>
                                                 : x.status === "Rejected" ?
 
                                                     <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
 
-                                                        <CButton onClick={this.approve(x._id)} color="success" style={{ width: 200, height: 35, marginRight: 20 }} >Approve</CButton>
+                                                        <CButton onClick={() =>this.submit(x._id)} color="success" style={{ width: 200, height: 35, marginRight: 20 }} >Approve</CButton>
 
                                                     </div>
                                                     : x.status === "Accepted" ?
                                                         <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
-                                                            <CButton onClick={this.reject(x._id)} color="danger" style={{ width: 200, height: 35 }} >Reject</CButton>
+                                                            <CButton onClick={() =>this.submit1(x._id)} color="danger" style={{ width: 200, height: 35 }} >Reject</CButton>
                                                         </div>
                                                         : null}
                                         </div>
