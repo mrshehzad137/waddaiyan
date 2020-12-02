@@ -17,6 +17,7 @@ import CustomerSignUp from './views/Customer/Signup';
 import Events from './views/User/events';
 import Profile from './views/User/profile';
 import Bookinguser from './views/User/Booking';
+import Createpromo from './views/Customer/VendorDashboard/Createpromo';
 import VendorDashboard from './views/Customer/VendorDashboard/VendorDashboard'
 import UpdateProfile from './views/User/updateProfile';
 import AdminDashboard from './views/admin/AdminDashboard';
@@ -52,6 +53,7 @@ class App extends Component {
             <Route exact path="/user/bookingvendor/:id" name="bookingvendor" component={bookingvendor} />
             <Route  path="/user/profile" name="User profile" component={Profile} />
              <Route  path="/user/Bookinguser" name="Bookinguser" component={Bookinguser} />
+             <Route  path="/user/Createpromo" name="Createpromo" component={Createpromo} />
             <Route  path="/user/edit" name="Update profile" component={UpdateProfile} />
             <Route  path="/vendordashboard" name="VendorDashboard" component={VendorDashboard} />
             <Route  path="/customer/signup" name="Customer Login" component={CustomerSignUp} />

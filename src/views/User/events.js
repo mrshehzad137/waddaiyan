@@ -87,7 +87,7 @@ class Events extends Component {
                alert("Event Created Successfully")
             })
             .catch(err => {
-                alert("Event Created Failed");
+                alert("Event Already Exist");
                 
             })
 
