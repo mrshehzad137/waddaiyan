@@ -95,18 +95,21 @@ class VendorDashboard extends Component {
                                             <div style={{ display: 'flex' }}>
                                                 <img src={logouser} style={{ width: 60, height: 60 }}></img>
 
-                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 20 }} >{x.user[0].name}</h4>
-                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 200 }}> Email:   {x.user[0].email}</h4>
+                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 20 ,width:300}} >{x.user[0].name}</h4>
+                                                <h4 style={{ fontSize: 14, marginTop: 20, }}> Email:   {x.user[0].email}</h4>
                                             </div>
                                             <div style={{ display: 'flex' }}>
-                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 80 }} >Event Category:  {x.event.eventCategory}</h4>
-                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 151 }}> Event Location:   {x.event.location}</h4>
+                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 80 ,width:300}} >Event Category:  {x.event.eventCategory}</h4>
+                                                <h4 style={{ fontSize: 14, marginTop: 20, }}> Event Location:   {x.event.location}</h4>
 
                                             </div>
-                                            <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 80, lineHeight: 0 }}> Descrption:     {x.event.description}</h4>
                                             <div style={{ display: 'flex' }}>
-                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 80, width: 200 }} >Venue:  {x.event.name}</h4>
-                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 110, width: 200 }}>Status:   {x.status}</h4>
+                                            <h4 style={{fontSize:14,marginTop:20,marginLeft:80,lineHeight:0,width:300}}> Descrption:     {x.event.description}</h4>
+                                            <h4 style={{fontSize:14,marginTop:20,}}> Discount:   {x.promocode?.discount} </h4>
+
+                                            </div>                                            <div style={{ display: 'flex' }}>
+                                                <h4 style={{ fontSize: 14, marginTop: 20, marginLeft: 80, width: 300 }} >Venue:  {x.event.name}</h4>
+                                                <h4 style={{ fontSize: 14, marginTop: 20, }}>Status:   {x.status}</h4>
 
                                             </div>
                                             {x.status === "Created" ?

@@ -5,7 +5,10 @@ import {
   CButton,
   CCard,
   CCardBody,
-  CCardHeader
+  CCardHeader,
+  CInput,
+  CFormGroup,
+  CLabel
 } from '@coreui/react'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
@@ -19,6 +22,7 @@ class bookingvendor extends Component {
         data:[],
         ide:'',
         eid:'',
+        promocode:'',
     }
     this.auth = new AuthService(); 
     this.submit= this.submit.bind(this);
@@ -59,14 +63,15 @@ class bookingvendor extends Component {
                 const data = {
                     eid:this.state.eid,
                     vendor:this.props.history.location.pathname.substring(20),
-                    user:useris
+                    user:useris,
+                    code:this.state.promocode
                 };
 
                 console.log(data,"data")
     
                 Axios.post('/api/user/add/vendor',data)
                 .then(res => {
-                   alert("Booking Created Successfully")
+                   alert(res.data.message)
                 })
                 .catch(err => {
                     alert("Booking Created Failed");
@@ -100,6 +105,18 @@ class bookingvendor extends Component {
                         variant="outlined" style={{ marginTop: '0px' }} />}
                     />
                     </div>
+
+                    <CFormGroup>
+                        <CInput
+                        style={{height:55,marginTop:20}}
+                          type="text"
+                          id="nf-event"
+                          name="nf-event"
+                          placeholder="Enter Promo Code"
+                          autoComplete="event"
+                          onChange={(event) => this.setState({promocode:event.target.value})}
+                        />
+                      </CFormGroup>
                     <CButton onClick ={this.submit} color="success" style={{ width: 150, height: 35 ,marginTop:30,float:'right'}} >Confirm</CButton>
                    </CCardBody>
                    </CCard>

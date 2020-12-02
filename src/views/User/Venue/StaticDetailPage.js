@@ -15,6 +15,7 @@ import { AiOutlineStar, AiFillPhone } from "react-icons/ai";
 import img from '../../../assets/img/profile.png'
 import withAuth from '../../withAuth';
 import AuthService from '../../AuthTest';
+import StarRatings from 'react-star-ratings';
 import Axios from 'axios'
 const datapicture = [
     "https://image.shutterstock.com/image-photo/wedding-venue-260nw-604904363.jpg", "https://i.insider.com/5e67f940235c1804fd14aba9?width=1100&format=jpeg&auto=webp", "https://blog.e360.pk/wp-content/uploads/2020/03/Wedding-Venues-and-Vehicles-for-a-Memorable-Event.jpg", "https://www.thestatesman.com/wp-content/uploads/2019/07/Wedding-Venue.jpg", "https://blog.bridals.pk/wp-content/uploads/2019/02/Banner-2.jpg",
@@ -25,6 +26,10 @@ class StaticDetailPage extends Component {
         super(props);
         this.state = {
             staticdata: "",
+            rating: 0,
+            ratingOverall:0 ,
+            comments:'',
+            reviedata:[],
         }
         this.auth = new AuthService();
 
@@ -37,6 +42,19 @@ class StaticDetailPage extends Component {
         Axios.get(`/api/vendor/get/venue/${id}`)
             .then(res => {
                 this.setState({ staticdata: res.data.venue })
+                this.setState({ reviedata: res.data.venue.reviews })
+
+                var sumOfReviews = 0;
+ 
+
+                for(var i=0;i<this.state.reviedata.length;i++){
+                    sumOfReviews=sumOfReviews+this.state.reviedata[i].rating;
+                }
+
+                const ratingAvg = Math.floor(sumOfReviews/this.state.reviedata.length);
+
+                this.setState({ratingOverall:ratingAvg})
+
                 console.log(res.data.venue);
             })
 
@@ -44,6 +62,33 @@ class StaticDetailPage extends Component {
                 alert("Venue get Failed");
 
             })
+    }
+    changeRating(newRating) {
+        this.setState({
+            rating: newRating
+        });
+    }
+    submitreview = () => {
+        const useris=localStorage.getItem('uid');
+        console.log("props.match.params.id", this.props.history.location.pathname.substring(23))
+        const id = this.props.history.location.pathname.substring(23)
+    
+        const data = {
+            rating:this.state.rating,
+            comments:this.state.comments,
+            user:useris,
+            venue:id
+        };
+
+        Axios.post('/api/user/add/review/venue',data)
+        .then(res => {
+           alert("Review Added Successfully")
+        })
+        .catch(err => {
+            alert("Review Created Failed");
+            
+        })
+
     }
     render() {
         return (
@@ -64,7 +109,7 @@ class StaticDetailPage extends Component {
 
                                         <div style={{ justifyContent: 'space-between', display: 'flex', paddingTop: 10 }}>
                                             <p style={{ fontWeight: 'bold', float: 'left', fontSize: 22 }}>{this.state.staticdata.name}</p>
-                                            <p style={{ fontWeight: 'bold', float: 'right', backgroundColor: 'green', color: 'white', textAlign: 'center', minWidth: 80, height: 30 }}><AiOutlineStar />  {this.state.staticdata.rating}</p>
+                                            <p style={{ fontWeight: 'bold', float: 'right', backgroundColor: 'green', color: 'white', textAlign: 'center', minWidth: 80, height: 30 }}><AiOutlineStar />  {this.state.ratingOverall}</p>
                                         </div>
                                         <div style={{ justifyContent: 'space-between', display: 'flex', lineHeight: 0 }}>
                                             <p style={{ fontWeight: 'bold', float: 'left', opacity: 0.5 }}>{this.state.staticdata.description}</p>
@@ -82,22 +127,22 @@ class StaticDetailPage extends Component {
                             </CCol>
 
 
-                            {/* <div style={{ backgroundColor: 'white', width: '90%', justifyContent: 'center', marginLeft: '5%', marginRight: '5%', marginBottom: 50 }}>
-                                {data.map(x =>
+                            <div style={{ backgroundColor: 'white', width: '90%', justifyContent: 'center', marginLeft: '5%', marginRight: '5%', marginBottom: 50 }}>
+                                {this.state.reviedata.map(x =>
 
                                     <CCol xs="12" sm="12" md="12">
                                         <div style={{ display: 'flex', width: '100%' }}>
                                             <img src={img} style={{ width: 60, height: 60, borderRadius: 99, marginTop: 20 }}></img>
-                                            <h6 style={{ fontSize: 18, marginTop: 30, paddingLeft: 10 }}>{x.title}</h6>
-                                            <p style={{ fontWeight: 'bold', backgroundColor: 'green', color: 'white', minWidth: 80, height: 30, marginTop: 30, marginLeft: 50 }}><AiOutlineStar />  4.9</p>
+                                            <h6 style={{ fontSize: 18, marginTop: 30, paddingLeft: 10 }}>{x.user.name}</h6>
+                                            <p style={{ fontWeight: 'bold', backgroundColor: 'green', color: 'white', minWidth: 80, height: 30, marginTop: 30, marginLeft: 50 }}><AiOutlineStar />  {x.rating}</p>
                                         </div>
-                                        <p style={{ float: 'left', paddingLeft: 30, width: '100%', marginBottom: 10, }}>{x.description}</p>
+                                        <p style={{ float: 'left', width: '100%', marginBottom: 10, }}>{x.comments}</p>
 
 
                                     </CCol>
 
                                 )}
-                            </div> */}
+                            </div>
                         </CRow>
                     </div>
                     <CRow>
@@ -111,13 +156,13 @@ class StaticDetailPage extends Component {
                                 <div >
                                     <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
                                         <p style={{ fontWeight: 'bold', float: 'left', marginTop: '10%' }}>{this.state.staticdata.name}</p>
-                                        <p style={{ fontWeight: 'bold', float: 'right', backgroundColor: 'green', color: 'white', textAlign: 'center', minWidth: 80, height: 30, marginTop: '10%' }}><AiOutlineStar />  {this.state.staticdata.rating}</p>
+                                        <p style={{ fontWeight: 'bold', float: 'right', backgroundColor: 'green', color: 'white', textAlign: 'center', minWidth: 80, height: 30, marginTop: '10%' }}><AiOutlineStar />  {this.state.ratingOverall}</p>
 
                                     </div>
                                     <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
                                         <p style={{ fontWeight: 'bold', float: 'left', }}>{this.state.staticdata.location}</p>
 
-                                        <p style={{ fontWeight: 'bold', float: 'right' }}>21 Reviews</p>
+                                        <p style={{ fontWeight: 'bold', float: 'right' }}>{this.state.reviedata.length} Reviews</p>
 
                                     </div>
 
@@ -128,14 +173,24 @@ class StaticDetailPage extends Component {
                             </CCol>
                             <CCol xs="12" sm="12" md="7">
                                 <p style={{ marginTop: 50, float: 'left', fontSize: 18, fontWeight: 'bold' }}>Review Mallu Farms</p>
+                             
                                 <CTextarea
+                                     style={{marginBottom:20}}
                                     name="textarea-input"
                                     id="textarea-input"
                                     rows="9"
+                                    onChange={(event) => this.setState({comments: event.target.value})}
                                     placeholder="Add your review..."
                                 />
+                                   <StarRatings
+                                    rating={this.state.rating}
+                                    starRatedColor="gold"
+                                    changeRating={(rating) => this.changeRating(rating)}
+                                    numberOfStars={5}
+                                    name='rating'
+                                />
 
-                                <CButton color="success" style={{ width: 200, height: 45, float: 'right', marginTop: 50 }} >Submit Review</CButton>
+                                <CButton onClick={this.submitreview} color="success" style={{ width: 200, height: 45, float: 'right', marginTop: 50 }} >Submit Review</CButton>
 
                             </CCol>
                         </div>

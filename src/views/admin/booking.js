@@ -74,18 +74,21 @@ class Booking extends Component {
                                         <div style={{ display: 'flex'}}>
                                             <img src={logouser} style={{width:60, height:60}}></img>
                                             
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:20,color:'Red'}} >{x.user[0].name}</h4>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:200}}> <span style={{color:'Blue'}}>Email:</span>   {x.user[0].email}</h4>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:180}}> <span style={{color:'Blue'}}>Date: </span>    {(x.timeanddate)?x.timeanddate.substring(0, 10):''}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:20,color:'Red',width:300}} >{x.user[0].name}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,width:300}}> <span style={{color:'Blue'}}>Email:</span>   {x.user[0].email}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,}}> <span style={{color:'Blue'}}>Date: </span>    {(x.timeanddate)?x.timeanddate.substring(0, 10):''}</h4>
                                             </div>
                                             <div style={{ display: 'flex' }}>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80}} ><span style={{color:'Blue'}}>Event Category:</span>  {x.event.eventCategory}</h4>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:151}}> <span style={{color:'Blue'}}>Event Location:</span>   {x.location}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300}} ><span style={{color:'Blue'}}>Event Category:</span>  {x.event.eventCategory}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,}}> <span style={{color:'Blue'}}>Event Location:</span>   {x.location}</h4>
                                                
                                             </div>
-                                            <h4 style={{fontSize:14,marginTop:20,marginLeft:80,lineHeight:0}}><span style={{color:'Blue'}}> Descrption:</span>      {x.event.description}</h4>
                                             <div style={{ display: 'flex' }}>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:200}} ><span style={{color:'Blue'}}>Venue:</span>  {(x.venue && x.venue.name)?x.venue.name:''}</h4>
+                                            <h4 style={{fontSize:14,marginTop:20,marginLeft:80,lineHeight:0,width:300}}><span style={{color:'Blue'}}>Description:</span>   {x.event.description}</h4>
+                                            <h4 style={{fontSize:14,marginTop:20,}}> <span style={{color:'Blue'}}>Discount:</span>  {x.promocode?.discount} </h4>
+
+                                            </div>                                             <div style={{ display: 'flex' }}>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300}} ><span style={{color:'Blue'}}>Venue:</span>  {(x.venue && x.venue.name)?x.venue.name:''}</h4>
                                                
                                             </div>
                                         
