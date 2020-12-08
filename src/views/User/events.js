@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import TimePicker from 'react-time-picker';
 import AuthService from '../AuthTest';
 import {
   CButton,
@@ -41,7 +42,8 @@ class Events extends Component {
       location:'',
       data:[],
       eventCategory:'',
-      date:''
+      date:'',
+      time:'10:00',
     }
     this.auth = new AuthService();
       
@@ -79,7 +81,8 @@ class Events extends Component {
               location:this.state.location,
               date:this.state.date,
               eventCategory:this.state.eventCategory,
-              userid:useris
+              userid:useris,
+              time:this.state.time
             };
 
             Axios.post('/api/user/create/event',data)
@@ -127,6 +130,8 @@ class Events extends Component {
                             <p>{x.location}</p>
                             <p>Event Category : {x.eventCategory}</p>
                             <p>Status : {x.status}</p>
+               <p>Time Date : {(x.timeanddate)?x.timeanddate.substr(0,10):''} {x?.timeHours}</p>
+                            
                           </CCol>
                         </CRow>
                       </CCardBody>
@@ -173,7 +178,7 @@ class Events extends Component {
                       onChange={(event) => this.setState({description:event.target.value})}>
 
                       </CTextarea>
-                      </CFormGroup>
+                      </CFormGroup>10:00
                       <CFormGroup>
                         <CLabel htmlFor="nf-event">Location</CLabel>
                         <CSelect style={{width:'50%'}} onChange={(event) => this.setState({location:event.target.value})}>
@@ -194,7 +199,28 @@ class Events extends Component {
                           onChange={(event) => this.setState({date:event.target.value})}
                         />
                       </CFormGroup>
-                     
+                      <CFormGroup>
+                      <CLabel htmlFor="nf-eventDate">Time</CLabel>
+                        <CSelect onChange={(event) => this.setState({time:event.target.value})} style={{width:'50%'}}>
+                          <option value="9:00 Am">Select</option>
+                          <option value="9:00 Am">9:00 Am</option>
+                          <option value="10:00 Am">10:00 Am</option>
+                          <option value="11:00 Am">11:00 Am</option>
+                          <option value="12:00 Pm">12:00 Pm</option>
+                          <option value="1:00 Pm">1:00 Pm</option>
+                          <option value="2:00 Pm">2:00 Pm</option>
+                          <option value="3:00 Pm">3:00 Pm</option>
+                          <option value="4:00 Pm">4:00 Pm</option>
+                          <option value="5:00 Pm">5:00 Pm</option>
+                          <option value="6:00 Pm">6:00 Pm</option>
+                          <option value="7:00 Pm">7:00 Pm</option>
+                          <option value="8:00 Pm">8:00 Pm</option>
+                          <option value="9:00 Pm">9:00 Pm</option>
+                          <option value="10:00 Pm">10:00 Pm</option>
+                          <option value="11:00 Pm">11:00 Pm</option>
+                          <option value="12:00 Am">12:00 Am</option>
+                        </CSelect>
+                      </CFormGroup>                     
                     </CForm>
                   </CCol>
                 </CRow>
