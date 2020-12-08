@@ -49,18 +49,7 @@ const VendorHeaderDropDown = () => {
         </CDropdownItem>
         <CDropdownItem>
           <CIcon name="cil-user" className="mfe-2" /><CHeaderNavLink to="/user/profile">Profile</CHeaderNavLink>
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name="cil-credit-card" className="mfe-2" /> 
-          Payments
-          <CBadge color="secondary" className="mfs-auto">$10</CBadge>
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name="cil-file" className="mfe-2" /> 
-          <CHeaderNavLink to="/user/events">Events</CHeaderNavLink>
-          <CBadge color="primary" className="mfs-auto">2</CBadge>
-        </CDropdownItem>
-        <CDropdownItem divider />
+        </CDropdownItem>x
         <CDropdownItem>
         <CHeaderNavLink onClick={logoutHandler}>Logout</CHeaderNavLink>
     

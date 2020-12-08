@@ -65,7 +65,7 @@ class Events extends Component {
       })
       
       .catch(err => {
-          alert("Venue get Failed");
+          alert("Event get Failed,Please Create one");
           
       })
   }

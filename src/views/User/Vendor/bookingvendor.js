@@ -51,7 +51,7 @@ class bookingvendor extends Component {
         })
         
         .catch(err => {
-            alert("Venue get Failed");
+            alert("Event get Failed, Please Create one");
             
         })
     }
@@ -72,6 +72,7 @@ class bookingvendor extends Component {
                 Axios.post('/api/user/add/vendor',data)
                 .then(res => {
                    alert(res.data.message)
+
                 })
                 .catch(err => {
                     alert("Booking Created Failed");
