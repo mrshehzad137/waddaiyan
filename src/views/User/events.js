@@ -130,7 +130,7 @@ class Events extends Component {
                             <p>{x.location}</p>
                             <p>Event Category : {x.eventCategory}</p>
                             <p>Status : {x.status}</p>
-               <p>Time Date : {(x.timeanddate)?x.timeanddate.substr(0,10):''} {x?.timeHours}</p>
+                            <p>Time Date : {(x.timeanddate)?x.timeanddate.substr(0,10):''} {x?.timeHours}</p>
                             
                           </CCol>
                         </CRow>
@@ -178,7 +178,7 @@ class Events extends Component {
                       onChange={(event) => this.setState({description:event.target.value})}>
 
                       </CTextarea>
-                      </CFormGroup>10:00
+                      </CFormGroup>
                       <CFormGroup>
                         <CLabel htmlFor="nf-event">Location</CLabel>
                         <CSelect style={{width:'50%'}} onChange={(event) => this.setState({location:event.target.value})}>
