@@ -49,7 +49,7 @@ const VendorHeaderDropDown = () => {
         </CDropdownItem>
         <CDropdownItem>
           <CIcon name="cil-user" className="mfe-2" /><CHeaderNavLink to="/user/profile">Profile</CHeaderNavLink>
-        </CDropdownItem>x
+        </CDropdownItem>
         <CDropdownItem>
         <CHeaderNavLink onClick={logoutHandler}>Logout</CHeaderNavLink>
     

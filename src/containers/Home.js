@@ -34,18 +34,14 @@ class Home extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   Axios.get('/api/vendor/getall/vendors')
-  //     .then(res => {
-  //       this.setState({ data: res.data.vendorList })
-  //       console.log(this.state.data)
-  //     })
+  componentDidMount() {
+    const type = localStorage.getItem('type');
+    if(type!='User'){
+      this.props.history.replace('/vendordashboard');
+    }
+    
+  }
 
-  //     .catch(err => {
-  //       alert("Venue get Failed");
-
-  //     })
-  // }
 
 
 //   componentDidMount (){
