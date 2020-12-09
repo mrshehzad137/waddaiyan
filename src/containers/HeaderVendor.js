@@ -45,6 +45,9 @@ const HeaderVendor = () => {
       <CHeaderNavItem className="px-3" >
           <CHeaderNavLink ><img src={logo} width="150"/></CHeaderNavLink>
         </CHeaderNavItem>
+        <CHeaderNavItem  className="px-3">
+          <CHeaderNavLink to="/vendordashboard" className="blinking2">Bookings</CHeaderNavLink>
+        </CHeaderNavItem>
         <CHeaderNavItem className="px-3" >
           <CHeaderNavLink to="/user/venuelist" className="blinking1">Venues</CHeaderNavLink>
         </CHeaderNavItem>

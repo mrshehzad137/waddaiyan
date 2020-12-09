@@ -28,6 +28,12 @@ class UserSignUp extends Component {
         name:'',
         email:'',
         password:'',
+        confirmpassword:'',
+        isemailvalid:true,
+        isemail:true,
+        isusername:true,
+        ispassword:true,
+        ispasswordmatch:true,
     }
     this.auth = new AuthService();
       
@@ -43,28 +49,65 @@ class UserSignUp extends Component {
 
     onChange(e){
             
-            this.setState({[e.target.name]: e.target.value});
+        this.setState({[e.target.name]: e.target.value});
     }
         
     submit(e){
 
         e.preventDefault();
-            
-                const data = {
-                    name:this.state.name,
-                    email:this.state.email,
-                    password:this.state.password
-                };
+        var isvalid=false;
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        if (!pattern.test(this.state.email)) {
+          this.setState({isemailvalid:false})
+        }else{
+          this.setState({isemailvalid:true})
+          isvalid=true;
+        }
+        if(this.state.email==''){
+          this.setState({isemail:false})
+        }else{
+          this.setState({isemail:true})
+          isvalid=true
+        }
+        if(this.state.name==''){
+          this.setState({isusername:false})
+        }else{
+          this.setState({isusername:true})
+          isvalid=true
+        }
 
-                Axios.post('/api/user/signup',data)
-                .then(res => {
-                    this.props.history.replace('/user/login');
-                })
-                .catch(err => {
-                    alert("User name or password incorrect");
-                    
-                })
+        if(this.state.password == '' || this.state.confirmpassword == ''){
+          this.setState({ispassword:false});
+          return;
+        }else{
+          this.setState({ispassword:true})
+          if(this.state.password != this.state.confirmpassword){
+            this.setState({ispasswordmatch:false})
+            isvalid=false
+            return;
+          }else{
+            isvalid=true
+            this.setState({ispasswordmatch:true})
+          }
+        }
 
+        const data = {
+            name:this.state.name,
+            email:this.state.email,
+            password:this.state.password
+        };
+
+
+        if(isvalid){
+          Axios.post('/api/user/signup',data)
+          .then(res => {
+              this.props.history.replace('/user/login');
+          })
+          .catch(err => {
+              alert("User name or password incorrect");
+              
+          })
+        }
     }
   
   render() {
@@ -76,7 +119,7 @@ class UserSignUp extends Component {
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
-                    <h1>Register</h1>
+                    <h1>Register Customer/User</h1>
                     <p className="text-muted">Create your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
@@ -87,6 +130,7 @@ class UserSignUp extends Component {
                       <CInput type="text" placeholder="Username" autoComplete="username" 
                        onChange={(event) => this.setState({name: event.target.value})}/>
                     </CInputGroup>
+                    <div style={{color:'red',display:(this.state.isusername?'none':'inherit')}}>Please provide a username is required </div>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
                         <CInputGroupText>@</CInputGroupText>
@@ -94,6 +138,8 @@ class UserSignUp extends Component {
                       <CInput type="email" placeholder="Email" autoComplete="email"
                        onChange={(event) => this.setState({email: event.target.value})} />
                     </CInputGroup>
+                    <div style={{color:'red',display:(this.state.isemailvalid?'none':'inherit')}}>Please provide a valid email</div>
+                    <div style={{color:'red',display:(this.state.isemail?'none':'inherit')}}>Please provide an email is required </div>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
                         <CInputGroupText>
@@ -109,8 +155,11 @@ class UserSignUp extends Component {
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="password" placeholder="Repeat password" autoComplete="new-password" />
+                      <CInput type="password" placeholder="Repeat password" autoComplete="new-password" 
+                      onChange={(event) => this.setState({confirmpassword: event.target.value})}/>
                     </CInputGroup>
+                    <div style={{color:'red',display:(this.state.ispassword?'none':'inherit')}}>Please provide a password and confirm password is required </div>
+                    <div style={{color:'red',display:(this.state.ispasswordmatch?'none':'inherit')}}>Password did not match please provide try again..!!! </div>
                     <CButton color="success" block onClick={this.submit}>Create Account</CButton>
                   </CForm>
                 </CCardBody>

@@ -40,7 +40,7 @@ class Booking extends Component {
             })
 
             .catch(err => {
-                alert("Venue get Failed");
+                alert("Bookings get Failed");
 
             })
     }
@@ -69,13 +69,16 @@ class Booking extends Component {
 
                                             </div>
                                             <div style={{ display: 'flex'  }}>
-                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300}} >Venue:  {x.event.name}</h4>
-                                                <h4 style={{fontSize:14,marginTop:20,}}>Status:   {x.status}</h4>
-                                               
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300}} >Venue:  {x.venue?x.venue.name:''}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20}} >Vendor:  {x.vendor?x.vendor.map(y=>{return y.name}):''}</h4>
                                             </div> 
-
-
-                                        
+                                            <div style={{ display: 'flex'  }}>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300}} >Date:  {x.timeanddate?x.timeanddate.substr(0,10):''}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20}} >Time:  {x.timeHours?x.timeHours:''}</h4>
+                                            </div> 
+                                            <div style={{ display: 'flex'  }}>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300}}>Status:   {x.status}</h4>
+                                            </div> 
                                         </div>
 
                                     </CCardBody>
