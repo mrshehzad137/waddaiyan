@@ -38,6 +38,7 @@ class AddVenue extends Component {
         name:'',
         description:'',
         location:'',
+        charges:'',
         data:[]
     }
     this.auth = new AuthService();
@@ -64,6 +65,7 @@ class AddVenue extends Component {
                     description:this.state.description,
                     location:this.state.location,
                     vendor:useris,
+                    charges:Number(this.state.charges)
                 };
 
                 Axios.post('/api/vendor/create/venue',data)
@@ -108,16 +110,6 @@ class AddVenue extends Component {
                           onChange={(event) => this.setState({name:event.target.value})}
                         />
                       </CFormGroup>
-                      {/* <CFormGroup>
-                        <CLabel htmlFor="nf-event">Event Category</CLabel>
-                        <CSelect style={{width:'50%'}}>
-                          <option>Select Category</option>
-                          <option>Wedding</option>
-                          <option>Birth day</option>
-                          <option>Aniversary</option>
-                          <option>College Party</option>
-                        </CSelect>
-                      </CFormGroup> */}
                       <CFormGroup>
                       <CLabel htmlFor="nf-eventCat">Venue Details</CLabel>
                       <CTextarea name="nf-eventCat" id="nf-eventCat" rows="5"
@@ -135,7 +127,19 @@ class AddVenue extends Component {
                           <option value="Faislabad">Faislabad</option>
                         </CSelect>
                       </CFormGroup>
-                     
+                      <CFormGroup>
+                        <CLabel htmlFor="nf-event"
+                        >Venue Charges</CLabel>
+                        <CInput
+                          type="text"
+                          id="nf-event"
+                          name="nf-event"
+                          placeholder="Enter charges"
+                          autoComplete="event"
+                          style={{width:'50%'}}
+                          onChange={(event) => this.setState({charges:event.target.value})}
+                        />
+                      </CFormGroup>
                     </CForm>
                   </CCol>
                 </CRow>

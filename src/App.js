@@ -26,6 +26,7 @@ import VenueAdmin from './views/admin/venue';
 import User from './views/admin/user';
 import Customer from './views/admin/customer';
 import Booking from './views/admin/booking';
+import AddRole from './views/User/Vendor/AddRole';
 
 class App extends Component {
   render() {
@@ -38,6 +39,7 @@ class App extends Component {
             <Route  path="/user/staticvendor/:id" name="StaticVendor" component={StaticVendor} /> 
             <Route  path="/user/StaticDetailPage/:id" name="StaticDetailPage" component={StaticDetailPage} />  
             <Route  path="/user/AddVenue" name="AddVenue" component={AddVenue} />
+            <Route  path="/user/AddRole" name="AddRole" component={AddRole} />
             <Route  path="/user/venuelist" name="Venuelist" component={Venuelist} />  
             <Route  path="/user/login" name="User Login" component={UserLogin} />
             <Route  path="/admin/login" name="User Login" component={AdminLogin} />

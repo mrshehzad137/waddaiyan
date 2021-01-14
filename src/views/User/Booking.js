@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../AuthTest';
 import { BiChevronsDown } from "react-icons/bi";
+import StripeCheckout from 'react-stripe-checkout';
 import {
     CInput,
     CInputGroup,
@@ -19,12 +20,14 @@ import logouser from '../../assets/img/profile.png'
 import CIcon from '@coreui/icons-react';
 import TheHeader from '../../containers/TheHeader';
 import Axios from 'axios'
+import { func } from 'prop-types';
 
 class Booking extends Component {
     constructor(props) {
         super(props);
         this.state = {
             staticdata: [],
+            booking:{}
         }
         this.auth = new AuthService();
 
@@ -44,6 +47,21 @@ class Booking extends Component {
 
             })
     }
+
+    paymentTest = (token) => {
+        console.log(token,this.state.booking);
+        Axios.post('/api/user/payment',{token,booking:this.state.booking})
+        .then(res => {
+            alert("Payment Successfully")
+            window.location.reload(false);
+        })
+        .catch(err => {
+            alert("Payment Faild");
+            window.location.reload(false);
+        })
+      }
+
+
     render() {
         return (
             <body  >
@@ -78,12 +96,23 @@ class Booking extends Component {
                                             </div> 
                                             <div style={{ display: 'flex'  }}>
                                                 <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300}}>Status:   {x.status}</h4>
+                                                <h4 style={{fontSize:14,marginTop:20,color:'red'}} >Charges:  {(x.vendor[0].charges + ((x.venue)?x.venue.charges:0))}</h4>
                                             </div> 
+                                            <div style={{ display: 'flex'  }}>
+                                                <h4 style={{fontSize:14,marginTop:20,marginLeft:80,width:300,color:'Green'}}>Payment Status:   {(x.paymentStatus)?x.paymentStatus:''}</h4>
+                                            </div>
                                         </div>
 
                                     </CCardBody>
-                                    <CCardFooter style={{ padding: 0 }}>
-
+                                    <CCardFooter style={{ padding: 10 }}>
+                                    <StripeCheckout style={{display:x.paymentStatus=="NotPaid"?'inherit':'none'}}
+                                        name="Purchase Vendor For Event"
+                                        token={this.paymentTest}
+                                        amount={(x.vendor[0].charges + ((x.venue)?x.venue.charges:0))*100}
+                                        stripeKey="pk_test_51I9VCgFlqTslhU9ys4l8nuV5eAlcvzXLeYbyKRZ77bryXegFBijCuZSmawAIXerjzU4pE6ZwUXp2YrFDtYEcyxZv00KEdYeQu0"
+                                    >
+                                    <CButton color="primary" style={{display:x.paymentStatus=="NotPaid"?'inherit':'none'}} onClick={()=>{this.setState({booking:x})}}>Pay <span style={{color:'red'}}>${(x.vendor[0].charges + ((x.venue)?x.venue.charges:0))}</span> Via Stripe Card</CButton>
+                                    </StripeCheckout>
                                     </CCardFooter>
                                 </CCard>
                             </CCol>

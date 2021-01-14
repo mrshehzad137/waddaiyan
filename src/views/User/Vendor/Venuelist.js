@@ -86,6 +86,7 @@ class Venuelist extends Component {
                             <h5>{x.name}</h5>
                             <p>{x.description}</p>
                             <p>{x.location}</p>
+                            <p>{x.charges} PKR <span style={{color:'red'}}>/per function</span></p>
                          
                           </CCol>
                         </CRow>
