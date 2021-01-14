@@ -55,6 +55,9 @@ const HeaderVendor = () => {
           <CHeaderNavLink to="/user/AddVenue" className="blinking2">Add Venue</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem  className="px-3">
+          <CHeaderNavLink to="/user/AddRole" className="blinking2">Add Role</CHeaderNavLink>
+        </CHeaderNavItem>
+        <CHeaderNavItem  className="px-3">
           <CHeaderNavLink to="/user/Createpromo" className="blinking2">Promo</CHeaderNavLink>
         </CHeaderNavItem>
 

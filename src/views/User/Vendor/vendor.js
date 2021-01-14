@@ -42,10 +42,10 @@ class vendor extends Component {
       <body className="app" >
         <TheHeader />
         <div style={{ marginTop: 180, marginLeft: 35, marginRight: 35 }}>
-
+          <h1>Event Planer</h1>
           <CRow>
             {this.state.data.map(x =>
-              <CCol xs="12" sm="6" md="3">
+              <CCol xs="12" sm="6" md="3" style={{display:x.role==="Event Planer"?'block':'none'}}>
                 <CCard>
                   <CCardBody style={{ padding: 0 }}>
                     <CLink to={`./staticvendor/${x._id}`}> <img src={datapicture[Math.floor(Math.random() * 12)]} style={{ width: 300, height: 200, }}></img></CLink>
@@ -56,8 +56,61 @@ class vendor extends Component {
                         <p style={{ fontWeight: 'bold', padding: 8 }}>Name:{x.name}</p>
                       </div>
                       <div style={{ lineHeight: 0, marginBottom: 5, marginLeft: 0, marginRight: 0, padding: 8 }}>
-                        <p>Role:  {x.role}</p>
-                        <p>Email:{x.email}</p>
+                        <p><strong>Role:</strong>  <span style={{color:'green'}}>{x.role}</span></p>
+                        <p><strong>Email:</strong> <span style={{color:'blue'}}>{x.email}</span></p>
+                        <p><strong>Charges:</strong> <span style={{color:'red'}}>{x.charges} PKR/per Function</span></p>
+                        <CLink to={`./bookingvendor/${x._id}`} > <CButton onClick={this.passId} color="success" style={{ width: 100, height: 35,marginLeft:180,marginTop:20 }} >Book</CButton></CLink>
+
+                      </div>
+                    </div>
+                  </CCardFooter>
+                </CCard>
+              </CCol>
+            )}
+          </CRow>
+          <h1>Designer</h1>
+          <CRow>
+            {this.state.data.map(x =>
+              <CCol xs="12" sm="6" md="3" style={{display:x.role==="Designer"?'block':'none'}}>
+                <CCard>
+                  <CCardBody style={{ padding: 0 }}>
+                    <CLink to={`./staticvendor/${x._id}`}> <img src={datapicture[Math.floor(Math.random() * 12)]} style={{ width: 300, height: 200, }}></img></CLink>
+                  </CCardBody>
+                  <CCardFooter style={{ padding: 0 }}>
+                    <div style={{ borderBottom: '1px dashed grey' }}>
+                      <div style={{ display: 'flex', }}>
+                        <p style={{ fontWeight: 'bold', padding: 8 }}>Name:{x.name}</p>
+                      </div>
+                      <div style={{ lineHeight: 0, marginBottom: 5, marginLeft: 0, marginRight: 0, padding: 8 }}>
+                        <p><strong>Role:</strong>  <span style={{color:'green'}}>{x.role}</span></p>
+                        <p><strong>Email:</strong> <span style={{color:'blue'}}>{x.email}</span></p>
+                        <p><strong>Charges:</strong> <span style={{color:'red'}}>{x.charges} PKR/per Function</span></p>
+                        <CLink to={`./bookingvendor/${x._id}`} > <CButton onClick={this.passId} color="success" style={{ width: 100, height: 35,marginLeft:180,marginTop:20 }} >Book</CButton></CLink>
+
+                      </div>
+                    </div>
+                  </CCardFooter>
+                </CCard>
+              </CCol>
+            )}
+          </CRow>
+          <h1>Photo Grapher</h1>
+          <CRow>
+            {this.state.data.map(x =>
+              <CCol xs="12" sm="6" md="3" style={{display:x.role==="Photo Grapher"?'block':'none'}}>
+                <CCard>
+                  <CCardBody style={{ padding: 0 }}>
+                    <CLink to={`./staticvendor/${x._id}`}> <img src={datapicture[Math.floor(Math.random() * 12)]} style={{ width: 300, height: 200, }}></img></CLink>
+                  </CCardBody>
+                  <CCardFooter style={{ padding: 0 }}>
+                    <div style={{ borderBottom: '1px dashed grey' }}>
+                      <div style={{ display: 'flex', }}>
+                        <p style={{ fontWeight: 'bold', padding: 8 }}>Name:{x.name}</p>
+                      </div>
+                      <div style={{ lineHeight: 0, marginBottom: 5, marginLeft: 0, marginRight: 0, padding: 8 }}>
+                        <p><strong>Role:</strong>  <span style={{color:'green'}}>{x.role}</span></p>
+                        <p><strong>Email:</strong> <span style={{color:'blue'}}>{x.email}</span></p>
+                        <p><strong>Charges:</strong> <span style={{color:'red'}}>{x.charges} PKR/per Function</span></p>
                         <CLink to={`./bookingvendor/${x._id}`} > <CButton onClick={this.passId} color="success" style={{ width: 100, height: 35,marginLeft:180,marginTop:20 }} >Book</CButton></CLink>
 
                       </div>
