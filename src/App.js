@@ -27,7 +27,8 @@ import User from './views/admin/user';
 import Customer from './views/admin/customer';
 import Booking from './views/admin/booking';
 import AddRole from './views/User/Vendor/AddRole';
-
+import VProfile from './views/User/vendorProfile';
+import UpdateVProfile from './views/User/updateVProfile';
 class App extends Component {
   render() {
     return (
@@ -54,9 +55,11 @@ class App extends Component {
             <Route  path="/user/booking/:id" name="booking" component={booking} />
             <Route exact path="/user/bookingvendor/:id" name="bookingvendor" component={bookingvendor} />
             <Route  path="/user/profile" name="User profile" component={Profile} />
+            <Route  path="/user/vprofile" name="User profile" component={VProfile} />
              <Route  path="/user/Bookinguser" name="Bookinguser" component={Bookinguser} />
              <Route  path="/user/Createpromo" name="Createpromo" component={Createpromo} />
             <Route  path="/user/edit" name="Update profile" component={UpdateProfile} />
+            <Route  path="/user/vedit" name="Update profile" component={UpdateVProfile} />
             <Route  path="/vendordashboard" name="VendorDashboard" component={VendorDashboard} />
             <Route  path="/customer/signup" name="Customer Login" component={CustomerSignUp} />
           </Switch>

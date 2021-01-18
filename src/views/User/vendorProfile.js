@@ -12,7 +12,7 @@ import CIcon from '@coreui/icons-react'
 import axios from 'axios'
 import TheHeader from '../../containers/TheHeader';
 import withAuth from '../withAuth';
-class Profile extends Component {
+class VProfile extends Component {
   
     constructor(props) {
         super(props);
@@ -24,11 +24,11 @@ class Profile extends Component {
     
       componentWillMount(){
         const useris=localStorage.getItem('uid');
-        axios.post('/api/user/getById',{id:useris})
+        axios.get('/api/vendor/get/'+useris)
         .then(res=>{
           console.log(res);
           this.setState({
-            user:res.data.user
+            user:res.data.vendor
           })
         })
         .catch(err=>{
@@ -78,7 +78,7 @@ class Profile extends Component {
                     </CRow>
                 </form>
                 </CCardBody>
-                <CCardFooter><a href="/user/edit" style={{float:'right'}}>Edit Profile</a></CCardFooter>
+                <CCardFooter><a href="/user/vedit" style={{float:'right'}}>Edit Profile</a></CCardFooter>
                 </CCard>
                </div>
                
@@ -88,4 +88,4 @@ class Profile extends Component {
   }
 }
 
-export default withAuth(Profile);
+export default withAuth(VProfile);

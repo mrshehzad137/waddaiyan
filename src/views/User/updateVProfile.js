@@ -17,7 +17,7 @@ import TheHeader from '../../containers/TheHeader';
 import withAuth from '../withAuth';
 import axios from 'axios'
 
-class UpdateProfile extends Component {
+class UpdateVProfile extends Component {
   
     constructor(props){
         super(props)
@@ -64,7 +64,7 @@ class UpdateProfile extends Component {
           formData.append('id',useris);
     
           axios({
-            url:'/api/user/update',
+            url:'/api/vendor/update',
             method:'PUT',
             headers:{
               'Content-Type': 'multipart/form-data'
@@ -87,14 +87,14 @@ class UpdateProfile extends Component {
     
       componentWillMount(){
         const useris=localStorage.getItem('uid');
-        axios.post('/api/user/getById',{id:useris})
+        axios.get('/api/vendor/get/'+useris)
         .then(res=>{
           console.log(res);
           this.setState({
-            user:res.data.user,
+            user:res.data.vendor,
             password:'',
-            email:res.data.user.email,
-            name:res.data.user.name,
+            email:res.data.vendor.email,
+            name:res.data.vendor.name,
           })
         })
         .catch(err=>{
@@ -191,4 +191,4 @@ class UpdateProfile extends Component {
   }
 }
 
-export default withAuth(UpdateProfile);
+export default withAuth(UpdateVProfile);
